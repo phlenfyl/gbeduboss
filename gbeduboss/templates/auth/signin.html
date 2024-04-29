@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Login{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ---------------------- Login Page ------------------------------ -->
+    <div class="login">
+        <div class="login-inner">
+            <h3> Enter your username and password  </h3>
+            <small>Remember Password or <a href=""><code>Forget Password</code></a></small>
+            {% if messages %}
+                {% for item in messages %}
+                    <div class="alert alert-primary mb-0" role="alert">
+                        {{item}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'signin' %}" method="POST" class="pt-4">
+                {% csrf_token %}
+                <div>
+                    <input type="text" name="username" class="user" placeholder="username">
+                </div>
+                <div>
+                    <input type="password" name="password" class="password mt-3 mb-3" placeholder="password">
+                </div>
+                <button type="submit">Continue</button>             
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+  {% include "footer.html" %}
+{% endblock footer %}

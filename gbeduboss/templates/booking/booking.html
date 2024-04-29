@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Booking{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+<div class="music-banner" id="banner">
+    <div class="container banner-text" wrap>
+        <h2>Book</h2>
+        <hr class="pb-2">
+        Fix Your Song or Book A Studio
+    </div>
+</div>
+{% endblock banner %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ---------------------- Booking ------------------------------ -->
+    <div class="d-flex bookings">
+        <div class="accordion mx-auto" id="accordionExample1">
+            <div class="accordion-item border-0 bg-transparent container">
+                <p class="text-center mt-3 pt-5">
+                    <a class="text-decoration-none px-2 h6 text-danger" style="margin-left: 2rem;" id="headingFive" role="button" data-bs-toggle="collapse" href="#Studiobook" aria-expanded="true" aria-controls="Studiobook">
+                        Book a Studio
+                    </a>
+            
+                    <a class="text-decoration-none collapsed px-3 h6 text-danger" id="headingFour" role="button" data-bs-toggle="collapse" href="#Songbook" aria-expanded="false" aria-controls="Songbook">
+                        Repair my Song
+                    </a>
+                </p>
+                {% if messages %}
+                    {% for item in messages %}
+                        <div class="alert alert-danger mb-0" role="alert">
+                            {{item}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+          
+            <div class="accordion-item bg-transparent border-0">
+                <div id="Studiobook" class="accordion-collapse collapse show" aria-labelledby="Studiobook" data-bs-parent="#accordionExample1">
+                    <div class="bg-transparent accordion-body">
+                        <div class="booking">
+                            <div class="container book">
+                                <label for="" class="msg">Send Your Message</label>
+                    
+                                <form action="{% url 'booking' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <label for="">Your Name</label>
+                                            <input type="text" name="name" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">Your Email</label>
+                                            <input type="email" name="email" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">Subject</label>
+                                            <input type="text" name="subject" class="user text-white" id="">
+                                        </div>
+                                    </div>
+                    
+                                    <div class="row g-4 mt-5 row1">
+                                        <div class="col-md-4">
+                                            <label for="">Date</label>
+                                            <input type="date" name="date" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">Phone</label>
+                                            <input type="tel" name="phone" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">File</label>
+                                            {{ form.file }}
+                                            <!-- <input type="file" name="file" class="form-control py-2 text-white" id="" multiple> -->
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col-8 mt-5 row1">
+                                        <label for="">Your Message</label> <br>
+                                        <textarea name="message" id="cols" class="mt-2 text-white px-3" cols="132" rows="9"></textarea>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="submit" name="submit" value="submit1" class="btn btn-outline-danger px-3 py-2 col-6">Register</button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="Songbook" class="accordion-collapse collapse" aria-labelledby="Songbook" data-bs-parent="#accordionExample1">
+                    <div class="bg-transparent accordion-body">
+                        <div class="booking">
+                            <div class="container book">
+                                <label for="" class="msg">Send Your Song</label>
+                    
+                                <form action="{% url 'booking' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <label for="">Your Name</label>
+                                            <input type="text" name="name" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">Your Email</label>
+                                            <input type="email" name="email" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">Subject</label>
+                                            <input type="text" name="subject" class="user text-white" id="">
+                                        </div>
+                                    </div>
+                    
+                                    <div class="row g-4 mt-5 row1">
+                                        <div class="col-md-6">
+                                            <label for="">Phone</label>
+                                            <input type="tel" name="phone" class="user text-white" id="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">File</label>
+                                            {{ cform.file }}
+                                            <!-- <input type="file" name="file" class="form-control py-2 text-white" id="" multiple> -->
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col-8 mt-5 row1">
+                                        <label for="">Your Message</label> <br>
+                                        <textarea name="message" id="cols" class="mt-2 text-white px-3" cols="132" rows="9"></textarea>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="submit" name="submit" value="submit2" class="btn btn-outline-danger px-3 py-2 col-6">Register</button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

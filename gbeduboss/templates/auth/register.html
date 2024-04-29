@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Register {% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ---------------------- Signup Page ------------------------------ -->
+    <div class="login">
+        <div class="login-inner">
+            <h3> Create Account </h3>
+            <small>Create a free account to manage your downloads and receive special discounts</small>
+            {% if messages %}
+                {% for item in messages %}
+                    <div class="alert alert-primary mb-0" role="alert">
+                        {{item}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'register' %}" method="POST" class="pt-4">
+            {% csrf_token %}
+                <div>
+                    <input type="text" name="username" class="user mb-3" placeholder="username" required>
+                </div>
+                <div>
+                    <input type="text" name="first_name" class="user mb-3" placeholder="firstname" required>
+                </div>
+                <div>
+                    <input type="text" name="last_name" class="user mb-3" placeholder="lastname">
+                </div>
+                <div>
+                    <input type="email" name="email" class="user mb-3" placeholder="email" required>
+                </div>
+                <div>
+                    <input type="hidden" name="image" value="christ.png" class="user mb-3" id="inputImage" required>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" name="" class="user mb-3" placeholder="fullname">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="" class="user mb-3" placeholder="email" required>
+                    </div>
+                </div> -->
+                <div>
+                    <input type="password" name="password1" class="password" placeholder="password">
+                </div>
+                <div>
+                    <input type="password" name="password2" class="password mt-3 mb-3" placeholder="comfirm password">
+                </div>
+                <button type="submit">Register</button>             
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+  {% include "footer.html" %}
+{% endblock footer %}

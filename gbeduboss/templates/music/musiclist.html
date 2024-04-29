@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Musiclist{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+    <div class="music-banner">
+        <div class="container banner-text" wrap>
+            <h2>My Music</h2>
+            <hr class="pb-2">
+            Listen our Tracks & Mixes
+        </div>
+    </div>
+{% endblock banner %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ---------------------- Music List ------------------------------ -->
+    <div class="music-list">
+        <div class="">
+            <div class="music-filters">
+                <div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="select" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                            ALL ARTISTS 
+                        </a>
+                        <ul class="dropdown-menu" id="menu">
+                            {% if cats %}
+                                {% for category in cats %}
+                                    <li><a class="dropdown-item" href="{% url 'categories_by_category' category.slug %}">{{ category.name }}</a></li>
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="select" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                            ALL GENRES 
+                        </a>
+                        <ul class="dropdown-menu" id="menu">
+                            {% if genrs %}
+                                {% for genre in genrs %}
+                                    <li><a class="dropdown-item" href="{% url 'genres_by_genre' genre.slug %}">{{ genre.name }}</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="select" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                            ALL CATEGORIES 
+                        </a>
+                        <ul class="dropdown-menu" id="menu">
+                            <li><a class="dropdown-item" href="#">Featured</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Free Download</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Hot New</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+
+            <div class="list-music container">
+                <div class="row row-cols-2 row-cols-lg-3 row-cols-md-3">
+                    {% if beatlist %}
+                        {% for i in beatlist %}
+                            <audio id="audio">
+                                <source src="{{ i.beats.url }}" id="audioSource" type="audio/mpeg">
+                            </audio>
+                            <div class="boxes" data-aos="fade-up" data-aos-duration="3000">
+                                <div class="all-overlay">
+                                    <div class="parent-overlay" id="parent">
+                                        <img src="{{ i.image.url }}" class="img-fluid p-0 m-0">
+                                    </div>
+                                    <div class="list-overlay">
+                                        <div class="font-list id-font">
+                                            <span id="audioPlayPaused"></span>
+                                            <a class="aTriggers" id="aTrigger" data-active="" data-audio="{{ i.beats.url }}">
+                                                <i class="fa fa-play"></i>
+                                            </a> 
+                                            <p>
+                                                <a href="{% url 'playsong' i.beats_id i.slug  %}">{{ i.name }}</a>
+                                                {% if i.price == 0 %}
+                                                    <a href="{% url 'download' i.beats_id %}" download={{i.beats.name}}><i class="fas fa-download"></i></a>                                                
+                                                {% else %}
+                                                    <small class="text-danger">$ {{ i.price }}</small>                                     
+                                                {% endif %}
+                                                {% if i.price != 0 %}
+                                                    
+                                                    <form action="{% url 'addtocart' %}" method="POST" class="">
+                                                    {% csrf_token %}
+                                                        <div>
+                                                            <input type="hidden" name="quantity" class="w-100 h-50" value="1" id="exampleInputText" aria-describedby="texthelp">
+                                                            {% if beatlist %}
+                                                                {% for i in beatlist %}
+                                                                    <input type="hidden" name="beatid" value="{{i.beats_id}}">
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                    
+                                                            <!-- <input type="hidden" name="albumid" value="{{album.pk}}"> -->
+                                                        </div>
+                                                        
+                                                        <button type="submit" class="bg-transparent border-0"><i class="fa fa-bag-shopping text-danger"></i></button>
+                                                    </form> 
+                                                {% else %}     
+                                                    <p></p> 
+                                                {% endif %}                                       
+                                            </p>
+                                            <b class="text-danger">Tags: </b> {% for tag in i.tags.all %}
+                                                <small>
+                                                    <a href="{% url 'beat_by_tag' tag.slug %}" class=""><small>{{tag.name}}</small></a>
+                                                </small>
+                                    
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                   {% if albumlist %}
+                        {% for i in albumlist %}
+                            <div class="boxes">
+                                <div class="all-overlay">
+                                    <div class="parent-overlay" id="parent">
+                                        <img src="{{ i.image.url }}" class="img-fluid">
+                                    </div>
+                                    <div class="list-overlay">
+                                        <div class="font-list id-font">
+                                            <p>
+                                                <a href="{% url 'albumsong' i.pk i.slug  %}">{{ i.name }}</a>
+                                                <small class="text-danger"><strong>$ {{ i.price }}</strong></small>
+                                            </p>
+                                            <form action="{% url 'addtocart' %}" method="POST" class="">
+                                            {% csrf_token %}
+                                                <div>
+                                                    <input type="hidden" name="quantity" class="w-100 h-50" value="1" id="exampleInputText" aria-describedby="texthelp">
+                                                    {% if albumlist %}
+                                                        {% for i in albumlist %}
+                                                            <input type="hidden" name="albumid" value="{{i.pk}}">
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                                
+                                                <button type="submit" class="bg-transparent border-0"><i class="fa fa-bag-shopping text-danger"></i></button>
+                                            </form>
+                                            
+                                            <b class="text-danger">Tags: </b>{% for tag in i.tags.all %}
+                                                <small>
+                                                    <a href="{% url 'album_by_tag' tag.slug %}" class=""><small>{{tag.name}}</small></a>
+                                                </small>
+                                    
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                   {% endif %}
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center pt-4 mt-3 pb-5 mb-5">
+                    {% if beatlist.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{beatlist.previous_page_number}}" id="pre">Previous</a>
+                        </li>
+                    {% elif albumlist.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{albumlist.previous_page_number}}" id="pre">Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link bg-muted text-muted"  id="pre" aria-disabled="true">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for item in beatlist.pag_page_range %}
+                        {% if beatlist.number == item %}
+                            <li class="page-item"><a class="page-link" id="link" href="?page={{item}}">{{item}}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" id="link" href="?page={{item}}">{{item}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for items in albumlist.pag_page_range %}
+                        {% if albumlist.number == item %}
+                            <li class="page-item"><a class="page-link" id="link" href="?page={{item}}">{{item}}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" id="link" href="?page={{item}}">{{item}}</a></li>
+                        {% endif %}                    
+                    {% endfor %}
+                    
+                    {% if beatlist.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{beatlist.next_page_number}}" id="pre" aria-label="Next">Next</a>
+                        </li>
+                    {% elif albumlist.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{albumlist.next_page_number}}" id="pre" aria-label="Next">Next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link bg-muted text-muted"  id="pre" aria-disabled="true">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %} {% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+    {% if messages %}
+        {% for item in messages %}
+            <div class="alert alert-primary mb-0" role="alert">
+                {{item}}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock header %}
+
+
+<!-- banner section Gbeduboss Recording Studio-->
+{% block banner %}
+    <div class="banner">
+        <section class="bannerdp" data-aos="fade-up" data-aos-duration="3000">
+            <p data-aos="fade-down" data-aos-duration="3000">{{ banner.first_word }}</p>
+            <hr class="w-25 mx-auto">
+
+            {{ banner.second_word }} <br>
+
+            <a href="{% url 'booking' %}" class="pt-3">Book Me</a>
+        </section>
+    </div>
+{% endblock banner %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ----------------------- services ------------------------ -->
+    <div class="studio h-100 pb-5">
+        <div class="services">
+            {{ service.header_one}}  
+            <p>{{ service.small_header }}</p>
+            <div class="row row-cols-1 row-cols-md-3 g-1 align-items-center m-3">
+                <div class="col" data-aos="fade-right" data-aos-duration="3000">
+                    <div class="col-inner">
+                        <div class="text-holder text-end" id="text">
+                            {% if one %}
+                                {% for item in one  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                        <span class="icon-equal"><i class="fa fa-sliders"></i></span>
+                    </div>
+                    <div class="col-inner">
+                        <div class="text-holder text-end" id="text">
+                            {% if two %}
+                                {% for item in two  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                        <span class="icon-equali"><i class="fa fa-headphones"></i></span>
+                    </div>
+                    <div class="col-inner">
+                        <div class="text-holder text-end" id="text">
+                            {% if three %}
+                                {% for item in three  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                        <span class="icon-equali"><i class="fa fa-music"></i></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="phone">
+                        <img src="{{ service.service_image.url }}" alt="">
+                    </div>
+                </div>
+                <div class="col" data-aos="fade-left" data-aos-duration="3000">
+                    <div class="col-inner">
+                        <span class="icon-equali"><i class="fa fa-wifi"></i></span>
+                        <div class="text-holder text-start">
+                            {% if four %}
+                                {% for item in four  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-inner">
+                        <span class="icon-equali"><i class="fa fa-life-ring"></i></span>
+                        <div class="text-holder text-start">
+                            {% if five %}
+                                {% for item in five  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-inner">
+                        <span class="icon-equali"><i class="fa fa-bolt-lightning"></i></span>
+                        <div class="text-holder text-start">
+                            {% if six %}
+                                {% for item in six  %}
+                                    <span class="text">{{ item.owned_by }}</span> <br>
+                                    {{ item.description }}
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ----------------------- buying anouce -------------------- -->
+    <div class="buy">
+        <div class="first" id="first">
+            <p class="first-buy">{{ advert.third_header }}</p>
+            <em>{{ advert.third_subheader }}</em>
+        </div>
+        <div class="second">
+            <a class="btn" href="{{ advert.link_one }}">{{ advert.link_name }}</a>
+            <a class="btn" href="{{ advert.link_two }}">{{ advert.link_nam }}</a>
+        </div>
+    </div>
+
+    <!-- ------------------------- showcase --------------------------- -->
+    <div class="showcase">
+        <div class="showcase-inner container">
+            <p class="stuff"><em>{{ advert.forth_header }}</em></p>
+            {{ advert.forth_subheader }}
+            <div class="row row-cols-2 row-cols-md-3 g-3 align-items-center" id="row">
+                {% if beat %}
+                    {% for item in beat %}
+                        <div class="col" data-aos="zoom-in" data-aos-duration="3000">
+                            <div class="all-overlay">
+                                <div class="parent-overlay">
+                                    <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="img-overlay">
+                                    <div class="font-img">
+                                        <span><a href="{% url 'playsong' item.beats_id item.slug  %}"><i class="fa fa-play text-info"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                 
+                    {% endfor %}
+                {% endif %}
+                {% if album %}
+                    {% for items in album %}
+                        <div class="col" data-aos="zoom-in" data-aos-duration="3000">
+                            <div class="all-overlay">
+                                <div class="parent-overlay">
+                                    <img src="{{ items.image.url }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="img-overlay">
+                                    <div class="font-img">
+                                        <span><a href="{% url 'albumsong' items.pk items.slug  %}"><i class="fa fa-play text-info"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+            <a class="show" href="{% url 'musiclist' %}">More Music</a>
+        </div>
+    </div>
+
+    <!--  -------------------------- Newsletter ------------------------------- -->
+    <div class="newsletter">
+        <div class="subscribe">
+            <p>Studio Newsletter</p>
+            Subscribe to get exclusive news
+            <div>
+                <form action="{% url 'index' %}" method="POST">
+                {% csrf_token %}
+                    <div class="mb-3">
+                        <input type="email" name="newsletter" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    
+                    <button type="submit" class="btn mb-3">Subscribe</button>        
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+  {% include "footer.html" %}
+{% endblock footer %}

@@ -1,0 +1,162 @@
+{% load guest_user %}
+
+<nav class="head">
+    <label class="logo"><a href="{% url 'index' %}">Gbeduboss</a></label>
+
+    <ul class="members">
+        <li id="blg"><a href="#">Blog</a></li>
+        <li id="blg"><a href="#">Gallery </a></li>
+        {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    {% if user.last_name %}
+                        <strong>Welcome</strong> {{user.last_name.title}}
+                    {% elif user|is_guest_user %}
+                        <small><strong>Welcome</strong> Guest</small>
+                    {% else %}
+                        <small><strong>Welcome</strong>{{user.username.title}}</small>
+                    {% endif %}
+                </a>
+                <ul class="dropdown-menu menu">
+                    <li><a class="dropdown-item" href="{% url 'loggout' %}">Logout</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="{% url 'signin' %}">Login |</a>&nbsp;<a href="{% url 'register' %}">Signup</a></li>
+        {% endif %}
+
+        <button class="mem"><a href="{% url 'booking' %}">Book a Studio</a></button>
+        <small>
+            <a href="#exampleModal" data-bs-toggle="modal"><i class="fa fa-bag-shopping"></i>
+                {% if count_toal > 0 %}
+                    <span class="bucket">{{count_toal}}</span>
+                {% else %}
+                    <span class="bucket">0</span>
+                {% endif %}
+            </a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" id="mod">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cart</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive-md">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Items</th>
+                                            <th scope="col" colspan="2">Price</th>
+                                            <!-- <th scope="col">Delete</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if beatcart %}
+                                            {% for items in beatcart %}
+                                                <tr>
+                                                    <td>
+                                                        <img src="{{ items.beat.image.url }}" class="rounded-image" alt="..." height="50" width="50">
+                                                    </td>
+                                                    <td>{{ items.beat.name }}</td>
+                                                    <td> ₦{{ items.beat.price }}</td>
+                                                    <td>
+                                                        <form action="{% url 'remove_item' %}" method="POST">
+                                                        {% csrf_token %}
+                                                            <input type="hidden" name="deletecart" value="{{items.pk}}">
+                                                            <button type="submit" class=" border-0 bg-transparent text-primary"><small> Delete</small></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                        
+                                        {% if albumcart %}
+                                            {% for item in albumcart %}  
+                                                <tr>
+                                                    <td>
+                                                        <img src="{{ item.album.image.url }}" class="rounded-image" alt="..." height="50" width="50">
+                                                    </td>
+                                                    <td>{{ item.album.name }}</td>
+                                                    <td>₦{{ item.album.price }}</td>
+                                                    <td>
+                                                        <form action="{% url 'remove_item' %}" method="POST">
+                                                        {% csrf_token %}
+                                                            <input type="hidden" name="cartdelete" value="{{item.pk}}">
+                                                            <button type="submit" class=" border-0 bg-transparent text-primary"><small> Delete</small></button>
+                                                        </form>
+                                                    </td>
+                                                </tr> 
+                                            {% endfor %}
+                                        {% endif %}                                            
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer gap-4">
+                            {% if beatcart or albumcart %}
+                                <a class="btn butn" href="{% url 'musiclist' %}">Contnue Shopping</a>
+                                <a class="btn cart_button" href="{% url 'checkout' %}">Checkout</a>
+                            {% else %}
+                                <a class="btn butn" href="{% url 'musiclist' %}">Contnue Shopping</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </small>
+    </ul>
+</nav>
+
+<div class="icons">
+    <nav class="navbar-expand-lg">
+        <button class="navbar-toggler bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Gbeduboss</h5>
+              <button type="button" class="btn-close bg-white text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="small-head">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            My Works 
+                        </a>
+                        <ul class="dropdown-menu menu">
+                            <li><a class="dropdown-item" href="https://music.apple.com/ng/playlist/gbeduboss-essentials/pl.u-8aAVZ6qhvgPb4ab">Studio Works</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'musiclist' %}">Studio Beats</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" href="#">Membership</a></li>
+                    <li><a class="nav-link" href="{% url 'booking' %}">Book a Studio</a></li>
+                    <li><a class="nav-link" href="#contact">Contact us</a></li>
+                    <li><a class="nav-link" href="#contact">Location</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+
+
+
+
+<!--  for messages pop up -->
+<!-- {% if messages %}
+    {% for item in messages %}
+    <div class="alert alert-primary mb-0" role="alert">
+        {{item}}
+    </div>
+        <div class="alert {{ message.tags }} alert-dismissible fade show mb-0" role="alert" style="background: #0dcaf0;margin-top: 1.8rem;">
+            <strong>Holy guacamole!</strong> {{item}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %} -->

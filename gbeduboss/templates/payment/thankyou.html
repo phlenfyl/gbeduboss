@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Cart{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+{% endblock header %}
+
+
+<!--  content section -->
+{% block content %}
+<!-- ---------------------------- Thankyou ------------------------ -->
+<div class="thankyou-page bg-light">
+    <div class="container">
+        <div class="thankyou-summary text-center mx-auto w-100 py-5 mb-2">
+            <div class="thankyou">
+                <h4>
+                    Your payment was successful
+                    <hr class="w-25 mx-auto">
+                </h4>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <p class="h5">Follow me on social platforms</p>
+                        <a href="{% url 'musiclist' %}" class="btn btn-outline-danger py-1 px-2 mt-3">Instagram</a>
+                        <a href="{% url 'musiclist' %}" class="btn btn-outline-danger py-1 px-2 mt-3">Facebook</a>
+                        <a href="{% url 'musiclist' %}" class="btn btn-outline-danger py-1 px-2 mt-3">Twitter</a>
+                    </div>
+                    <div class="col-md-6 artist">
+                        <p class="h5">Songs and Artist have worked with</p>
+                        <a href="https://music.apple.com/ng/playlist/gbeduboss-essentials/pl.u-8aAVZ6qhvgPb4ab" class="btn btn-outline-danger py-1 px-3 mt-3">Featured Artists</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

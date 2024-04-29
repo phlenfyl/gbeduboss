@@ -1,0 +1,1619 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root{
+    --black-colors: #000000;
+    --white-colors: #ffffff;
+    --orange-colors: #FF611D;
+    --lightdark-colors: #181918;
+    --darkwhite-colors: #E1E0E1;
+    --verylightdark-color: #1B1B1A;
+    --rareblack-color: #242526;
+    --bootstrap-red: #DC3545;
+    --kinda-black: #0A0A0C;
+}
+html,body{
+    overflow-x: hidden;
+}
+
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    box-sizing: border-box !important;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ------------------------- CART DROPDOWN ------------------- */
+.modal{
+    padding: 0.8rem 0.6rem !important;
+}
+#mod{
+    margin: 0 auto !important;
+    padding: 0 auto !important;
+}
+.modal-title, .modal-footer{
+    padding: 0.8rem 1rem !important;
+}
+.modal-footer button{
+    background: var(--orange-colors);
+    color: var(--darkwhite-colors);
+    padding: 0.6rem 0.5rem !important;
+    transition: all 0.5s ease-out;
+}
+.modal-footer button:hover{
+    background: transparent;
+    color: var(--black-colors);
+    border: 1px solid var(--orange-colors);
+}
+.modal-footer .butn{
+    background: transparent;
+    border: 1px solid var(--orange-colors);
+    color: var(--black-colors);
+    padding: 0.6rem 0.5rem !important;
+    transition: all 0.5s ease-out;
+}
+.modal-footer .butn:hover{
+    background: var(--orange-colors);
+    color: var(--darkwhite-colors);
+}
+.modal-body{
+    padding: 1rem 1rem !important;
+    margin: 1.5rem 0 !important;
+}
+tr th{
+    padding: 0.5rem 1rem !important;
+}
+tr td{
+    padding: 0.5rem 1rem !important;
+}
+/* ------------------------- CART DROPDOWN ------------------- */
+
+
+/* ------------------------- MAIN HEAD ------------------- */
+.head{
+    height: 65px;
+    width: 100%;
+    background: var(--lightdark-colors);
+    padding-bottom: 0 !important;
+}
+
+label.logo{
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0 3rem !important;
+    margin-left: 2.5rem !important;
+    line-height: 60px;
+}
+.logo a{
+    text-decoration: none;
+    color: var(--white-colors);
+}
+
+.head ul{
+    float: right;
+    margin-right: 10rem !important;
+}
+.members li{
+    display: inline-block;
+    line-height: 4.5rem;
+    margin: 0 01rem !important;
+    /* padding: 0 1rem !important; */
+}
+.members a{
+    color: var(--darkwhite-colors);
+    text-decoration: none;
+    font-size: 1rem;
+}
+/* ------ signup and login buttons ----- */
+button.mem{
+    line-height: 0 !important;
+    height: 2.4rem;
+    width: 8rem;
+    border: 1px solid var(--orange-colors);
+    border-radius: 0.3rem;
+    background: transparent;
+    transition: all 0.75s ease-in-out;
+}
+button.mem:hover{
+    border: none;
+    border-radius: 0.3rem;
+    background: var(--orange-colors);
+    color: var(--black-colors);
+}
+.mem a{
+    margin-top: 5rem !important;
+    color: var(--white-colors);
+}
+.mem a:hover{
+    color: var(--black-colors);
+}
+.members small{
+    margin-top: 1.5rem !important;
+}
+.fa-bag-shopping{
+    color: var(--orange-colors);
+    font-size: 1.5rem;
+    padding-left: 2rem !important;
+}
+
+/* ---------------------- other head ----------------- */
+.small-head{
+    margin-left: 5rem !important;
+}
+.small-head li{
+    display: inline-block;
+    padding: 0 0.5rem !important;
+    line-height: 2.5rem;
+}
+.small-head a{
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.5s ease-in-out;
+    color: var(--darkwhite-colors);
+}
+.small-head a:hover{
+    color: var(--orange-colors);
+}
+.icons{
+    height: 3rem;
+    background: var(--verylightdark-color);
+}
+
+.menu{
+    background: var(--lightdark-colors) !important;
+}
+
+.menu li{
+    display: block !important;
+}
+.menu a{    
+    font-weight: 400;
+    transition: all 0.5s ease-in-out;
+    color: var(--darkwhite-colors);
+}
+.menu a:hover{
+    color: var(--orange-colors);
+    background-color: transparent;
+}
+/* ------------------------- MAIN HEAD END ------------------- */
+
+/* -------------------- banner ------------------- */
+div.banner{
+    text-align: center;
+    color: var(--darkwhite-colors);
+    font-size: 2rem;
+}
+.banner{
+    background: url(../images/studio.jpg) no-repeat rgba(0, 0, 0, 0.75);
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 7.1rem) !important;
+    background-blend-mode: darken;
+    width: 100%;
+}
+.banner section{
+    margin: 0 !important;
+}
+.bannerdp{
+    padding-top: 15% !important;
+}
+.bannerdp p{
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--white-colors);
+    text-align: center !important;
+}
+.bannerdp hr{
+    height: 2rem !important;
+    color: var(--orange-colors);
+    font-weight: 500;
+}
+.bannerdp a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.7rem 2rem !important;
+    color: var(--dark-colors);
+    background: var(--orange-colors);
+    transition: all 0.75s ease-in-out;
+}
+.bannerdp a:hover{
+    color: var(--orange-colors);
+    background: transparent;
+    border: 1px solid var(--orange-colors);
+}
+
+
+
+/* ---------------------- services ---------------------- */
+.studio{
+    text-align: center;
+    width: 100%;
+    background: var(--black-colors);
+}
+.studio .services{
+    padding-top: 3rem !important;
+    font-size: 2.7rem;
+    font-weight: 500;
+    padding: 0;
+    color: var(--white-colors);
+}
+.services p{
+    font-size: 1.3rem;
+    color: var(--darkwhite-colors);
+}
+.col-inner{
+    display: inline-flex;
+    font-size: 1.1rem;
+}
+.col-inner div{
+    padding: 0 0.6rem !important;
+    margin: 0 0.1rem !important;
+    font-weight: 400;
+}
+.studio .row{
+    padding-top: 2rem !important;
+}
+.text-holder{
+    width: 60%;
+    color: var(--darkwhite-colors);
+}
+.text-holder span{
+    color: var(--white-colors);
+    transition: all 0.75s ease-in-out;
+}
+#text{
+    margin-left: 7rem !important;
+}
+.text{
+    font-weight: bold;
+}
+.icon-equal i{
+    font-size: 1.8rem;
+    transform: rotate(90deg) !important;
+    color: var(--darkwhite-colors);
+    transition: all 0.75s ease-in-out;
+}
+.icon-equali i{
+    font-size: 1.8rem;
+    color: var(--darkwhite-colors);
+    transition: all 0.75s ease-in-out;
+}
+.text-holder span:hover, .icon-equal i:hover, .icon-equali i:hover{
+    color: var(--orange-colors);
+}
+
+/* phone */
+.phone{
+    margin-top: 3rem !important;
+}
+
+
+/* --------------- buying anouce --------------- */
+.buy{
+    padding-bottom: 4rem !important;
+    background: var(--orange-colors);
+    width: 100%;
+}
+.buy .first{
+    margin-left: 15rem !important;
+    font-size: 1.2rem;
+    color: var(--white-colors);
+}
+.first-buy{
+    padding-top: 2rem !important;
+    font-size: 2.5rem
+}
+.second{
+    float: right;
+    margin-top: -3.3rem !important;
+    margin-right: 20rem !important;
+}
+.second a{
+    background: var(--darkwhite-colors);
+    border: none;
+    width: 7rem;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    margin-left: 0.5rem !important;
+    transition: all 0.46s ease-in-out;
+}
+.second a:hover{
+    background: transparent;
+    border: 1px solid var(--darkwhite-colors);
+}
+
+
+/* ----------------- showcase ----------------------- */
+.showcase{
+    background: var(--lightdark-colors);
+}
+.showcase-inner{
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--darkwhite-colors);
+}
+.stuff{
+    padding-top: 2rem !important;
+    font-size: 2.5rem;
+    color: var(--white-colors);
+}
+.showcase-inner .row{
+    margin: 8rem !important;
+}
+#row .col{
+    padding-left: 1rem !important;
+    padding-top: 0.5rem !important;
+}
+
+.all-overlay{
+    position: relative;
+}
+.all-overlay:hover .img-overlay{
+    opacity: 0.8;
+}
+.all-overlay:hover .parent-overlay img{
+    transform: scale(.9)
+}
+.parent-overlay img{
+    transition: all .75s ease-in;
+}
+.parent-overlay{
+    position: relative;
+}
+.img-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    background-color: rgba(240, 128, 80, 0.795);
+    cursor: pointer;
+}
+.font-img i{
+    font-size: 2.5rem !important;
+}
+.img-overlay .font-img span{
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    color: #FFFFFF;
+}
+.img-overlay .font-img a{
+    background-color: transparent !important;
+}
+.img-overlay .font-img small{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    color: #FFFFFF;
+}
+.showcase-inner a{
+    margin-bottom: 2rem !important;
+    background: var(--orange-colors) !important;
+    padding: 0.6rem !important;
+
+    width: 8rem;
+    font-size: 1.1rem;
+    border: none;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    color: var(--darkwhite-colors);
+}
+.showcase-inner a:hover{
+    background: transparent !important;
+    border: 1px solid var(--orange-colors);
+    color: var(--orange-colors);
+}
+
+/*  --------------------- newletter ---------------------- */
+.newsletter{
+    text-align: center;
+    width: 100%;
+    background: url(../images/THE_QUBE_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_008-1.jpg) var(--black-colors) no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.subscribe input{
+    margin-top: 1.5rem !important;
+    width: 30%;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    height: 2.5rem;
+}
+.subscribe{
+    font-size: 1.2rem;
+    font-weight: 200;
+    padding-bottom: 3rem !important;
+    color: var(--darkwhite-colors);
+}
+.subscribe p{
+    font-size: 2.5rem;
+    padding-top: 3rem !important;
+    color: var(--white-colors);
+}
+.subscribe button{
+    height: 2.6rem;
+    background: var(--orange-colors) !important;
+    width: 10rem;
+    color: var(--white-colors);
+    font-size: 1.1rem;
+    border: none;
+    transition: all 0.5s ease-in;
+}
+.subscribe button:hover{
+    background: transparent !important;
+    color: var(--orange-colors);
+    border: 1px solid var(--orange-colors);
+}
+
+/*  ---------------------------- footer ---------------------- */
+.container-1{
+    display: flex;
+}
+.container-1 div{
+    border: var(--black-colors);
+    padding: 10px !important;
+}
+#blog{
+    padding-top: 4rem !important;
+    font-size: 27px;
+    font-weight: 400;
+    margin-left: 14rem !important;
+    padding-bottom: 1rem !important;
+}
+#social{
+    padding-top: 4rem !important;
+    font-size: 27px;
+    margin-left: 4rem !important;
+}
+#address{
+    padding-top: 4rem !important;
+    font-size: 27px;
+}
+.box-1{
+    background-color: var(--lightdark-colors);
+    color: var(--darkwhite-colors);
+    flex: 2;
+}
+.box-1 ul{
+    margin-left: 14rem !important;
+    padding: 1rem 0 !important;
+}
+#small-blg li{
+    font-size: 0.9rem;
+}
+#small-blg a{
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--white-colors);
+}
+.box-3{
+    background-color: var(--verylightdark-color);
+    color: var(--darkwhite-colors);
+    flex: 2;
+}
+.box-3 ul{
+    padding-top: 1.5rem !important;
+}
+.box-3 li{
+    padding-top: 0.3rem !important;
+}
+.box-3 a{
+    color: var(--darkwhite-colors);
+    text-decoration: none;
+}
+
+.box-3 span{
+    font-size: 1.5rem;
+}
+.box-2{
+    background-color: var(--rareblack-color);
+    color: var(--darkwhite-colors);
+    flex: 1;
+}
+.box-2 ul{
+    margin-left: 4rem !important;
+    padding-top: 1.5rem !important;
+}
+.box-2 li{
+    padding-top: 0.5rem !important;
+}
+.box-2 a{
+    color: var(--darkwhite-colors);
+    text-decoration: none;
+}
+
+
+/* --------------------------- login page ------------------- */
+.login{
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 2px);
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.login-inner h3{
+    padding: 1rem 0 !important;
+}
+.login-inner button{
+    padding: 0.6rem 0 !important;
+    width: 90%;
+    border: none;
+    border-radius: 1rem;
+    background: var(--bootstrap-red);
+    color: var(--white-colors);
+    transition: all 0.6s ease-in-out;
+}
+.login-inner button:hover{
+    border: 1px solid var(--bootstrap-red);
+    background: transparent;
+    color: var(--black-colors);
+}
+.user, .password{
+    padding: 0.6rem 0.2rem !important;
+    width: 96%;
+    border-radius: 0.3rem;
+    border: 0.1rem solid;
+    color: var(--verylightdark-color);
+}
+.login-inner a{
+    text-decoration: none;
+    color: var(--bootstrap-red);
+}
+.login-inner a:hover{
+    text-decoration: underline;
+}
+
+
+
+/* --------------------------- Music List --------------------------- */
+.music-banner{
+    background: url(../images/studio-music.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 40vh;
+    width: 100%;
+    padding-left: 2rem !important;
+    color: var(--darkwhite-colors) !important;
+}
+.music-banner .banner-text{
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding-bottom: 2rem !important;
+    font-size: 1.2rem;
+}
+.banner-text h2{
+    padding-top: 6rem !important;
+    padding-bottom: 1rem !important;
+}
+#texts h2{
+    padding-top: 6rem !important;         /* change this */
+    color: var(--darkwhite-colors) !important;
+}
+#texts a{
+    margin-bottom: 1rem !important;
+    padding: 0.1rem 0.5rem !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--darkwhite-colors);
+    background: var(--lightdark-colors);
+}
+#texts a{
+text-decoration: dashed;
+}
+
+/* ---- music-filters ----- */
+.music-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: var(--kinda-black);
+}
+
+.list-music img{
+    border: 1px solid;
+    width: 100%;
+    height: 40vh;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.music-filters{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem !important;
+    padding: 0.8rem 2rem !important;
+    gap: 0;
+}
+#menu{
+    padding: 0 8.7rem !important;
+    border: 1px solid var(--white-colors);
+    background: var(--black-colors) !important;
+}
+#menu a{
+    color: var(--darkwhite-colors);
+}
+#menu a:hover{
+    background: transparent !important;
+}
+#select{
+    padding: 1rem 8rem !important;
+    border: 0.6px solid var(--white-colors);
+    color: var(--white-colors);
+}
+.list-music{
+    margin: 2rem 6rem !important;
+    padding: 0 2rem !important;
+}
+
+.list-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.904);
+    cursor: pointer;
+}
+.list-overlay .font-list p{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    right: 0;
+}
+.list-overlay .font-list form{
+    position: absolute;
+    bottom: 10%;
+    left: 17%;
+    right: 0;
+}
+.list-overlay .id-font form{
+    position: absolute;
+    bottom: 10%;
+    left: 30%;
+    right: 0;
+}
+.font-list a{
+    color: var(--darkwhite-colors);
+    text-decoration: none;
+}
+.font-list i{
+    font-size: 1rem;
+}
+#aTrigger i{
+    position: absolute;
+    left: 45%;
+    right: 50%;
+    top: 45%;
+    margin-top: -6px;
+    font-size: 40px;
+    color: var(--bootstrap-red);
+}
+
+.all-overlay:hover .list-overlay{
+    opacity: 0.8;
+}
+#parent img{
+    transition: all .4s ease-in;
+}
+.all-overlay:hover #parent img{
+    transform: scale(.7)
+}
+/* paginator */
+#pre{
+    padding: 0.4rem 1rem !important;
+    border-radius: 0.2rem;
+    background: transparent;
+    border: 1px solid var(--darkwhite-colors);
+    transition: all 0.45s ease-in-out;
+    color: var(--darkwhite-colors);
+}
+#link{
+    padding: 0.4rem 1rem !important;
+    border-radius: 0.2rem;
+    background: transparent;
+    border: 1px solid var(--darkwhite-colors);
+    transition: all 0.45s ease-in-out;
+    color: var(--darkwhite-colors);
+}
+#link:hover, #pre:hover{
+    background: var(--darkwhite-colors);
+    border: none;
+    color: var(--black-color);
+}
+
+
+/* ----------------------- albumlist ---------------------------- */
+.album{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 0 !important;
+    padding-bottom: 1rem !important;
+    background: var(--lightdark-colors);
+}
+.audio_player{
+    width: 100%;
+    font-family: arial;
+    font-size: 16px;
+    margin: 1.5rem 0 !important;
+}
+
+.player{
+    background-color: #02131d;
+    padding: 15px !important;
+    box-shadow: 0 0 2px 2px #04c7c7 inset;
+}
+
+.audio-title{
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 15px !important;
+}
+
+.player-middle-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.player-middle-left span{
+    color: #00b0e4;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 20px !important;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 8px 4px #025656;
+    transition: all 0.3s ease-out;
+
+    pointer-events: none;
+    opacity: 0.3;
+}
+.player-middle-left span.active{
+    pointer-events: auto;
+    opacity: 1;
+}
+.player-middle-right span{
+    font-size: 22px;
+    color: #908e8e;
+    display: block;
+    text-align: left;
+    font-weight: 700;
+}
+
+.audioPlaylistWrap{
+    padding: 15px;
+    background: linear-gradient(to bottom, #025656,#002d2d);
+}
+
+.audio-list{
+    margin-bottom: 2px !important;
+    position: relative;
+}
+
+#name{
+    background: #1f1b1b !important;
+    color: var(--white-colors);
+    font-size: 16px;
+    padding: 10px 15px !important;
+    transition: all 0.4s ease-out;
+}
+#name:hover{
+    background: var(--orange-colors) !important;
+}
+
+.aTrigger{
+    position: relative;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    color: var(--white-colors);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.aTrigger i{
+    position: absolute;
+    left: 33rem;
+    top: 1rem;
+    margin-top: -6px;
+    font-size: 12px;
+}
+
+a[data-active= "active"] + #name,
+a[data-active= "pause"] + #name{
+    background: var(--orange-colors) !important;
+}
+/* for pagination */
+.pagi{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+#predj{
+    padding: 3rem 0 !important;
+    background: var(--rareblack-color);
+    text-align: center;
+    padding-right: 2rem !important;
+    color: var(--darkwhite-colors);
+}
+#pred{
+    padding: 3rem 0 !important;
+    background: var(--rareblack-color);
+    border-right: 0.1rem solid var(--darkwhite-colors);
+    color: var(--darkwhite-colors);
+    text-align: center;
+}
+#pred:hover, #predj:hover{
+    background: var(--orange-colors);
+    border: none;
+}
+/* for pagination end */
+
+.album .container{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    margin-left: 3rem !important;
+}
+.pic-body{
+    color: var(--darkwhite-colors);
+}
+.pic-body p{
+    color: var(--white-colors);
+}
+.tracklist{
+    margin-top: 1rem !important;
+}
+.tracklist span{
+    padding: 0 1rem !important;
+}
+.album-lane{
+    width: 87%;
+}
+
+/* --------------------------------------- Booking --------------------------------------- */
+.bookings{
+    background-color: var(--rareblack-color) !important;
+    height: calc(135vh - 2rem);
+}
+.booking{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    width: 100%;
+}
+.book label{
+    font-weight: bold;
+    color: var(--darkwhite-colors);
+}
+.book input, textarea{
+    background: transparent;
+    border: 0.3px solid var(--white-colors);
+}
+label.msg{
+    margin: 1.5rem 0 !important;
+    font-size: 2rem;
+}
+#banner{
+    background-image: url(../images/studio-services.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 40vh;
+    background-repeat: no-repeat;
+    background-blend-mode: darken !important;    
+}
+
+
+/* ------------------------- Checkout ------------------------ */
+.checkout{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: calc(110vh - 1rem);
+    padding: 2rem 0 !important;
+    margin: 3rem 0 !important;
+}
+#row1, #row2{
+    padding: 0 1rem !important;
+}
+.checkout_form, .term_cond, .payment{
+    margin: 1.5rem 2rem !important;
+}
+.checkout_table{
+    padding: 1.2rem 1rem !important;
+}
+#row1 hr{
+    display: none;
+}
+
+.cart_button{
+    background-color: var(--orange-colors);
+    padding: 0.6rem 1rem !important;
+    transition: all 0.5s ease-in-out;
+}
+.cart_button:hover{
+    background-color: transparent;
+    border: 1px solid var(--orange-colors);
+}
+
+
+/* --------------------------- THANKYOU ----------------------- */
+.thankyou-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}
+.thankyou h4{
+    margin-bottom: 3rem !important;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+/* ----------------- small screen size ------------------- */
+@media (min-width: 800px) and (max-width: 1024px){
+    /*  ------------- head ----------------- */
+    label.logo{
+        padding: 0 3rem !important;
+        margin-left: 1rem !important;
+    }
+    .head ul{
+        float: right;
+        margin-right: 2rem !important;
+    }
+    .members li{
+        display: inline-block;
+        line-height: 4.5rem;
+        margin: 0 0.4rem !important;
+    }
+    .fa-bag-shopping{
+        font-size: 1.5rem;
+        padding-left: 1rem !important;
+    }
+    /* ---------- other head --------- */
+    .small-head{
+        margin-left: 3rem !important;
+    }
+
+    /* ----------------- services -------------------- */
+    #text{
+        margin-left: 5rem !important;
+    }
+    .text-holder{
+        width: 70%;
+    }
+    /* phone */
+    .phone img{
+        height: 70vh;
+    }
+
+    /* ---------------- buying anouce ----------------- */
+    .buy .first{
+        margin-left: 8rem !important;
+    }
+    .second{
+        float: right;
+        margin-top: -3.3rem !important;
+        margin-right: 5rem !important;
+    }
+
+    /*  --------------------- newsletter --------------- */
+    .subscribe input{
+        width: 50%;
+    }
+
+    /* ------------- footer --------- */
+    #blog{
+        padding-top: 4rem !important;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-left: 8rem !important;
+        padding-bottom: 1rem !important;
+    }
+    #social{
+        padding-top: 4rem !important;
+        font-size: 1.5rem;
+        margin-left: 2rem !important;
+    }
+    #address{
+        padding-top: 4rem !important;
+        font-size: 1.5rem;
+    }
+    .box-1 ul{
+        margin-left: 8rem !important;
+        padding: 1rem 0 !important;
+    }
+    #small-blg li{
+        font-size: 0.7rem;
+    }
+    #small-blg a{
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: var(--white-colors);
+    }
+    .box-3 ul{
+        padding-top: 1.5rem !important;
+    }
+    .box-3 li{
+        padding-top: 0.3rem !important;
+    }
+    .box-3 a{
+        color: var(--darkwhite-colors);
+        text-decoration: none;
+    }
+    .box-3 span{
+        font-size: 1.5rem;
+    }
+    .box-2 ul{
+        margin-left: 2rem !important;
+        padding-top: 1.5rem !important;
+    }
+    .box-2 li{
+        padding-top: 0.5rem !important;
+    }
+    .box-2 a{
+        color: var(--darkwhite-colors);
+        text-decoration: none;
+    }
+
+    /* ------------- music-list --------------- */
+    #menu{
+        padding: 0 5.7rem !important;
+        border: 1px solid var(--white-colors);
+        background: var(--black-colors) !important;
+    }
+    #select{
+        padding: 1rem 5rem !important;
+        border: 0.6px solid var(--white-colors);
+        color: var(--white-colors);
+    }
+    .music-filters{
+        margin-right: 2.3rem !important;
+    }
+    .list-music{
+        margin: 2rem -1rem !important;
+        padding: 0 3rem !important;
+    }
+    .list-overlay .id-font form{
+        position: absolute;
+        bottom: 10%;
+        left: 40%;
+        right: 0;
+    }
+
+    /* albumlist */
+    .album .container{
+        display: grid;
+        grid-template-columns: repeat(2, 48%);
+        margin-left: 2rem !important;
+        column-gap: 1.5rem;
+    }
+    .tracklist{
+        margin-top: 0.5rem !important;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    /*  ------------- head ----------------- */
+    label.logo{
+        margin-left: 0.2rem !important;
+        line-height: 4rem;
+    }
+    .head ul{
+        float: right;
+        margin-right: 2rem !important;
+    }
+    .members li{
+        display: inline-block;
+        line-height: 4.5rem;
+        margin: 0 0.4rem !important;
+    }
+    .fa-bag-shopping{
+        font-size: 1.5rem;
+        padding-left: 1rem !important;
+    }
+    /* -------------- other head ----------- */
+    .icons{
+        position: absolute;
+        top: 2.4%;
+        left: 1%;
+        z-index: 100;
+    }
+    .fa-bars{
+        font-size: 2rem;
+        color: var(--orange-colors);
+    }
+    .small-head{
+        margin-top: 1rem !important;
+    }
+    .small-head li{
+        display: block;
+        padding: 2rem !important;
+        text-align: start;
+    }
+    .small-head a{
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding: 0 !important;
+        margin: 0 !important;
+        transition: all 0.5s ease-in-out;
+        color: var(--white-colors);
+    }
+    .menu li{
+        padding: 0.5rem !important;
+    }
+    .icons{
+        height: 1rem;
+        background: transparent;
+    }
+
+    /* --------------- banner -------------- */
+    div.banner{
+        padding-top: -10rem !important;
+    }
+    .banner{
+        height: calc(100vh - 4.1rem) !important;
+    }
+    .bannerdp{
+        padding-top: 30% !important;
+    }
+
+    /* ----------------- services -------------------- */
+    #text{
+        margin-left: 2rem !important;
+    }
+    .text-holder{
+        width: 70%;
+    }
+    /* phone */
+    .phone{
+        margin-left: -1rem !important;
+    }
+
+    /* ------------ buying anouce -------------- */
+    .buy .first{
+        margin-left: 8rem !important;
+    }
+    .second{
+        float: right;
+        margin-top: -3.3rem !important;
+        margin-right: 5rem !important;
+    }
+
+    /* showcase */
+    .showcase-inner .row{
+        margin: 3rem !important;
+    }
+    .showcase-inner a{
+        margin-top: -3rem !important;
+    }
+    /*  --------------------- newsletter --------------- */
+    .subscribe input{
+        width: 70%;
+    }
+
+    /* ------------- footer --------- */
+    .container-1{
+        flex-direction: column;
+    }
+    #blog, #social, #address{
+        margin-left: 1.3rem !important;
+        font-size: 2rem;
+    }
+    .box-1 ul, .box-3 ul, .box-2 ul{
+        margin-left: 1.3rem !important;
+        padding: 1rem 0 !important;
+    }
+    #small-blg li{
+        font-size: 0.9rem;
+        color: var(--darkwhite-colors);
+    }
+    #small-blg a{
+        text-decoration: none;
+        font-size: 1.1rem;
+        color: var(--white-colors);
+    }
+    .box-3 li{
+        padding-top: 0.3rem !important;
+    }
+    .box-3 a{
+        color: var(--darkwhite-colors);
+        text-decoration: none;
+    }
+    .box-3 span{
+        font-size: 1.5rem;
+    }
+    .box-2 a{
+        color: var(--darkwhite-colors);
+        text-decoration: none;
+    }
+    .lane{
+        width: 96%;
+        margin: 0.3rem 0 !important;
+    }
+
+    /* ------------- music-list --------------- */
+    #menu{
+        padding: 0 4.2rem !important;
+        border: 1px solid var(--white-colors);
+        background: var(--black-colors) !important;
+    }
+    #select{
+        padding: 1rem 3.4rem !important;
+        border: 0.6px solid var(--white-colors);
+        color: var(--white-colors);
+    }
+    .list-music{
+        margin: 1.5rem 0.9rem !important;
+        padding: 0 1rem !important;
+    }
+    .list-overlay .id-font form{
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        right: 0;
+    }
+
+    /* album  */
+    .album .container{
+        margin-left: 0.5rem !important;
+        column-gap: 1rem;
+    }
+    .aTrigger i{
+        position: absolute;
+        left: 21rem;
+        top: 1rem;
+        margin-top: -6px;
+        font-size: 12px;
+    }
+
+    /* booking */
+    #cols{
+        width: 45rem;
+    }
+}
+
+@media only screen and  (max-width: 500px){
+    /*  ------------- head ----------------- */
+    label.logo{
+        margin-left: 1.7rem !important;
+        padding: 0 !important;
+        line-height: 4.7rem;
+        font-size: 1.2rem;
+    }
+    #blg, .mem{
+        display: none;
+    }
+    .head ul{
+        float: right;
+        margin-right: 1rem !important;
+    }
+    .members a{
+        font-size: 0.9rem;
+    }
+    .fa-bag-shopping{
+        font-size: 1rem;
+        padding-left: 0rem !important;
+        color: var(--orange-colors);
+    }
+    /* ----------- other head ------------ */
+    .bannerdp p{
+        font-size: 2.1rem;
+    }
+    .bannerdp{
+        font-size: 1.5rem;
+    }
+    .bannerdp a{
+        margin-top: 2rem !important;
+    }
+    .icons{
+        position: absolute;
+        top: 5%;
+        left: 1%;
+    }
+    .fa-bars{
+        font-size: 1.3rem;
+        color: var(--orange-colors);
+        background: transparent;
+    }
+
+    /* ----------------- services -------------------- */
+    #text{
+        margin-left: 0 !important;
+        width: 100%;
+        font-size: 0.9rem !important;
+    }
+    .text-holder span{
+        font-size: 0.9rem !important;
+    }
+    .icon-equal i, .icon-equali i{
+        height: 0.6rem !important;
+    }
+    .text-holder{
+        width: 100%;
+    }
+    .services, .first-buy, .stuff, .newsletter p{
+        font-size: 1.9rem !important;
+    }
+    .services p, .text-holder, .second a, .showcase-inner, .newsletter{
+        font-size: 0.9rem !important;
+    }
+    /* phone */
+    .phone{
+        display: none;
+    }
+
+    /* ------------ buying anouce -------------- */
+    .buy{
+        padding-bottom: 2rem !important;
+        background: var(--orange-colors);
+        height: 100%;
+        text-align: center;
+    }
+    .buy .first{
+        margin-left: 0rem !important;
+        padding-bottom: 1rem !important;
+        font-size: 0.9rem;
+    }
+    .first-buy{
+        padding-top: 0rem !important;
+        font-size: 2.5rem;
+    }
+    .second{
+        float: none;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+    }
+
+
+    /* --------------- showcase ----------------- */
+    .font-img i{
+        font-size: 2rem !important;
+    }
+    .img-overlay .font-img span{
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        color: #FFFFFF;
+    }
+
+    /* ----------------------- music list ----------------- */
+    .music-banner .banner-text{
+        padding-left: 1rem !important;
+    }
+
+    /* ------------- music-list --------------- */
+    #menu{
+        padding: 0 7.8rem !important;
+        border: 1px solid var(--white-colors);
+        background: var(--black-colors) !important;
+    }
+    #select{
+        padding: 1rem 7rem !important;
+        border: 0.6px solid var(--white-colors);
+        color: var(--white-colors);
+    }
+    .list-music{
+        margin: 2rem 0 !important;
+        padding: 0 1rem !important;
+    }
+    .list-overlay .id-font form{
+        position: absolute;
+        bottom: 10%;
+        left: 60%;
+        right: 0;
+    }
+    /* ------------------- album-list --------------------- */
+    .pic-card img{
+        width: 90% !important;
+        margin-left: 1.2rem !important;
+    }
+    .pic-card .pic-body{
+        margin-left: 1.2rem !important;
+        font-size: 0.8rem;
+    }
+    .pic-card .pic-body p{
+        font-size: 1rem;
+    }
+    .album .container{
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+        margin-left: 0.1rem !important;
+    }
+    .container .tracklist{
+        padding-top: 2.5rem !important;
+    }
+    .tracklist .h4{
+        margin-left: 1.2rem !important;
+        font-size: 1.7rem;
+    }
+    .tracklist small{
+        margin-left: 1rem !important;
+    }
+    .audio_player{
+        width: 90%;
+        font-family: arial;
+        font-size: 16px;
+        margin: 1.5rem auto !important;
+    }  
+    .aTrigger i{
+        position: absolute;
+        left: 22.5rem;
+        top: 1rem;
+        margin-top: -6px;
+        font-size: 12px;
+    }
+    /*  ----------------- footer --------------- */
+    #blog, #social, #address{
+        font-size: 1.5rem !important;
+    }
+    #small-blg li{
+        font-size: 0.6rem;
+    }
+    #small-blg a, .box-2 a, .box-3 a, .qe{
+        font-size: 0.9rem;
+    }
+    #small-blg p{
+        font-size: 1rem;
+    }
+    .box-3 span{
+        font-size: 1rem !important;
+    }
+
+    /* booking */
+    #cols{
+        width: 26.4rem;
+    }
+    .row1{
+        margin-top: 0 !important;
+    }
+    .bookings{
+        height: 160vh;
+    }
+    .book label{
+        font-size: 0.9rem;
+    }
+    label.msg{
+        margin: 1rem 0 !important;
+        font-size: 1.4rem;
+    }
+
+    /* checkout */
+    .checkout{
+        height: 100%;
+        padding: 1rem 0 !important;
+        margin: 0.5rem 0 !important;
+    }
+    .order p{
+        margin-left: 1rem !important;
+    }
+    #row1{
+        margin-bottom: 1.5rem !important;
+    }
+    #row1 hr{
+        display: flex !important;
+    }
+
+    /* --------- thankyou ------------- */
+    .artist{
+        margin: 2.5rem 0 !important;
+    }
+    .thankyou-page{
+        height: 100vh;
+    }
+    
+}
+@media only screen and  (max-width: 375px){
+    /* ------------- music-list --------------- */
+    #menu{
+        padding: 0 6rem !important;
+        border: 1px solid var(--white-colors);
+        background: var(--black-colors) !important;
+    }
+    #select{
+        padding: 1rem 5.2rem !important;
+        border: 0.6px solid var(--white-colors);
+        color: var(--white-colors);
+    }
+    .list-overlay .id-font form{
+        position: absolute;
+        bottom: 10%;
+        left: 80%;
+        right: 0;
+    }
+
+    /* ------------------- album-list --------------------- */
+    .pic-card img{
+        width: 90% !important;
+        margin-left: 1rem !important;
+    }
+    .pic-card .pic-body{
+        margin-left: 1.2rem !important;
+    }
+    .album .container{
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+        margin-left: 0.1rem !important;
+    }
+    .container .tracklist{
+        padding-top: 2.5rem !important;
+    }
+    .tracklist .h4{
+        margin-left: 1.5rem !important;
+        font-size: 1.7rem;
+    }
+    .tracklist small{
+        margin-left: 1rem !important;
+    }
+    .aTrigger i{
+        position: absolute;
+        left: 19.5rem;
+        top: 1rem;
+        margin-top: -6px;
+        font-size: 12px;
+    }
+
+    /* booking */
+    #cols{
+        width: 23.4rem;
+    }
+}
+
+@media only screen and  (max-width: 320px){
+    /* musiclist */
+    #menu{
+        padding: 0 4.3rem !important;
+        border: 1px solid var(--white-colors);
+        background: var(--black-colors) !important;
+    }
+    #select{
+        padding: 1rem 3.5rem !important;
+        border: 0.6px solid var(--white-colors);
+        color: var(--white-colors);
+    }
+    /* booking */
+    #cols{
+     width: 19.4rem;
+ } 
+}

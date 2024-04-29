@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+<!-- title block -->
+{% block title %}| Checkout{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+{% endblock header %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ---------------------------- Checkout ------------------------ -->
+    <div class="checkout">
+        <div class="container">
+            {% if messages %}
+                {% for item in messages %}
+                    <div class="alert alert-primary mb-0" role="alert">
+                        {{item}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="order">
+                <p>Please recheck if the order below is correct and choose your payment method</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3" id="row1">
+                    <div class="card first_row">
+                        <div class="card-head border py-2 px-2 h6">
+                            <p><strong>Order</strong></p>
+                        </div>
+                        <div class="card-body checkout_table">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    {% if beatcart %}
+                                        {% for items in beatcart %}
+                                            <tr>
+                                                <td>
+                                                    <img src="{{ items.beat.image.url }}" class="rounded-image" alt="..." height="50" width="50">
+                                                </td>
+                                                <td>{{ items.beat.name }}</td>
+                                                <td>{{ items.beat.price }}</td>
+                                                
+                                            </tr>
+                                        {% endfor %} 
+                                    {% endif %} 
+                                    {% if albumcart %}
+                                        {% for item in albumcart %}  
+                                            <tr>
+                                                <td>
+                                                    <img src="{{ item.album.image.url }}" class="rounded-image" alt="..." height="50" width="50">
+                                                </td>
+                                                <td>{{ item.album.name }}</td>
+                                                <td>{{ item.album.price }}</td>
+                                            </tr> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="total mt-3">
+                        <p><strong>Total: </strong> ₦{{ fulltotal }}</p>
+                        <small><strong>Note:</strong> Use Paypal for Payment using dollar card as it is converted automatically to dollar</small>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-md-6" id="row2">
+                    <div class="card">
+                        <div class="card-head border py-2 px-2 h6">
+                            <p><strong>Your Details</strong></p>
+                        </div>
+                        <div class="card-body checkout_form">
+                            <form action="{% url 'checkout' %}" method="POST" class="">
+                            {% csrf_token %}
+                            {{checkout.as_p}} 
+                            <!-- <div>
+                                <input type="text" name="fullname" value="{{ user.firstname }}" class="user" placeholder="fullname" required>
+                            </div>
+                                <div>
+                                    <input type="email" name="email" value="{{ user.email }}" class="user mt-3" placeholder="email" required>
+                                </div> -->
+                                <button type="submit" class="btn btn-outline-danger mt-3 px-5 py-2">Register</button>             
+                                <small class="mx-auto pt-3 px-3 text-info"><strong>Please register here if you are a guest</strong></small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-head border py-2 px-2 h6">
+                            <p><strong>Licence Agreement</strong></p>
+                        </div>
+                        <div class="card-body term_cond">
+                            <input type="checkbox" name="licence" id="" required>
+                            <small required>I agree to the <a href="#">Terms and Condition</a></small>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-head border py-2 px-2 h6">
+                            <p><strong>Payment Method</strong></p>
+                        </div>
+                        <div class="card-body text-center payment">
+                            <form action="{% url 'paidorder' %}" method="POST" class="">
+                            {% csrf_token %}                                 
+                                {% if user.is_authenticated %}
+                                    <div>
+                                        <input type="hidden" name="fullname" value="{{ user.username }}" class="user" placeholder="fullname" required>
+                                        <input type="hidden" name="get_total" value="{{ fulltotal }}" class="user">
+                                        {% if beatcart %}
+                                            {% for items in beatcart %}
+                                                <input type="hidden" name="get_beat" value="{{ items.beat.name }}" class="user">
+                                            {% endfor %}
+
+                                        {% endif %}
+
+                                        {% if albumcart %}
+                                            {% for item in albumcart %}
+                                                <input type="hidden" name="get_album" value="{{ item.album.name }}" class="user">   
+                                            {% endfor %}
+                                        {% endif %}                                       
+                                    </div>
+                                    <div>
+                                        <input type="hidden" name="email" value="{{ user.email }}" class="user mt-3" placeholder="email" required>
+                                    </div>           
+                                {% else %}
+                                    <div>
+                                        <input type="hidden" name="fullname" value="{{ user.username }}" class="user" placeholder="fullname" required>
+                                        <input type="hidden" name="get_total" value="{{ fulltotal }}" class="user">
+                                        {% if beatcart %}
+                                            {% for items in beatcart %}
+                                                <input type="hidden" name="get_beat" value="{{ items.beat.name }}" class="user">
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if albumcart %}                                          
+                                            {% for item in albumcart %}
+                                                <input type="hidden" name="get_album" value="{{ item.album.name }}" class="user">   
+                                            {% endfor %}
+                                        {% endif %}
+                                        <input type="hidden" name="email" value="{{ form.email }}" class="user mt-3" placeholder="email" required>
+                                    </div>
+                                    {% comment %} <div>
+                                        <input type="hidden" name="email" value="{{ user.email }}" class="user mt-3" placeholder="email" required>
+                                    </div>  {% endcomment %}
+                                {% endif %}
+                                  
+                                <button type="submit" name="paystack" value="paystack" class="col-12 btn btn-danger border-0 py-1">Paystack</button>    
+                            </form>
+                            <p class="text-center py-2">or</p>
+                            {{ form.render }}
+                            <small class="text-center py-2">Use Paypal Payment</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

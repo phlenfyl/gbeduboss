@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% load guest_user %}
+
+<!-- title block -->
+{% block title %}| Albumsong{% endblock title %}
+
+
+<!-- header section -->
+{% block header %}
+    {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+    <div class="music-banner">
+        <div class="container banner-texts" id="texts" wrap>
+            <h2>My Music</h2>
+            <span>
+                {% if album %}
+                    {% for tag in album.tags.all %}
+                        <a href="{% url 'album_by_tag' tag.slug %}" class=""><small>{{tag.name}}</small></a>
+            
+                        {% if not forloop.last %} {% endif %}
+                    {% endfor %}
+                {% endif %}                
+            </span>
+            <hr class="pb-2">
+            Listen our Tracks & Mixes
+        </div>
+    </div>
+{% endblock banner %}
+
+
+<!--  content section -->
+{% block content %}
+    <!-- ----------------------Album List ------------------------------ -->
+    <div class="album">
+        <div>
+            <div class="container" id="album">
+                <div class="pic-card">
+                    <img src="{{ album.image.url }}" class="img-fluid" width="400">
+                    <div class="pic-body pt-3 mt-4">
+                        <div>
+                            <p>RELEASE DATE /</p>
+                            {{ album.updated.date }}
+                        </div>
+                        <hr class="mt-2 mb-2 album-lane">
+                        <div>
+                            <p>CATALOG /</p>
+                            {{ album.catalog }}
+                        </div>
+                        <hr class="mt-2 mb-2 album-lane">
+                        <div>
+                            <p>LABEL /</p>   
+                            {{ album.label }}
+                        </div>
+                        <hr class="mt-2 mb-2 album-lane">
+                        <div>
+                            <p>FORMAT /</p>
+                            {{ album.beat_format }}
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="tracklist text-white">
+                    <span class="h4">Release tracklist</span>
+                    <div class="audio_player">
+                        {% if albu %}
+                            {% for item in albu %}
+                                <audio id="audio">
+                                    <source src="{{ item.beats.url }}" id="audioSource" type="audio/mpeg">
+                                </audio>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="player">
+                            <span class="audio-title" id="audioTitle">
+                                Title
+                            </span>
+                            <div class="player-middle-row">
+                                <div class="player-middle-left">
+                                    <span id="audioPlayPause"><i class="fa fa-play"></i></span>
+                                    <span id="audioStop"><i class="fa fa-stop"></i></span>
+                                </div>
+                                <div class="player-middle-right">
+                                    <span id="duration">0:0</span>
+                                    <span id="durationUpdate">0:0</span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="audioPlaylistWrap">
+                            <div class="audio-list">
+                                {% if albu %}
+                                    {% for item in albu %}
+                                        <a class="aTrigger" data-active="" data-audio="{{ item.beats.url }}">
+                                            <i class="fa fa-play"></i>
+                                        </a>
+                                        <div class="data-list-in" id="name">Audioname</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <form action="{% url 'addtocart' %}" method="POST" class="d-flex">
+                    {% csrf_token %}
+                        <div>
+                            <input type="hidden" name="quantity" class="w-100 h-50" value="1" id="exampleInputText" aria-describedby="texthelp">
+                            <input type="hidden" name="albumid" value="{{album.pk}}">
+                            <input type="hidden" name="beatid" value="{{beat.beats_id}}">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-outline-danger px-3 py-2 mt-4">Add To Cart</button><br>
+                    </form>
+    
+                    <p class="h4">Few Words</p>
+    
+                    <small>
+                        {{ album.album_name.descrip| safe }}    
+                    </small>
+
+
+                    <div class="details-comment text-start mx-auto mt-4 pt-4">
+                        <h4>Comment Section</h4>
+                        {% if albcom %}
+                            {% for item in albcom %}
+                                <div class="d-flex px-3">
+                                    {% if item.pics.url %}
+                                        <img src="{{ item.pics.url }}" class="rounded-circle" width="40">
+                                    {% else %}
+                                        <img src="{% static 'images/gbedu.jpg' %}" class="rounded-circle" width="40">
+                                    {% endif %}
+                                    <h6 class="pt-2 mx-3">{{ item.user.username }}</h6>
+                                </div>
+                                <div class="d-flex px-4 mx-4 my-2"> 
+                                    <p class="pl-3"> {{ item.comment }} </p> &nbsp; &nbsp;
+                                    <small> {{ item.date.date }} </small> &nbsp; &nbsp;
+                                    <form action="{% url 'remove_album_comment' album.pk album.slug %}" method="POST">
+                                    {% csrf_token %}
+                                        <input type="hidden" name="deletealbum" value="{{item.id}}">
+                                        <button type="submit" class=" border-0 bg-transparent text-primary"><small> Delete</small></button>
+                                    </form>
+                                </div>                
+                            {% endfor %}    
+                        {% endif %}
+
+                        <hr class="line" style="background-color: #000000;">
+                        <form action="{% url 'albumsong' album.pk album.slug %}" method="POST"  class="row g-3 mt-3 mb-3">
+                            {% csrf_token %}
+                            {{ albums.as_p }}
+                            
+                            {% if user.is_authenticated == user|is_guest_user %}
+                                <span class="mt-2">
+                                    Please <a href="{% url 'signin' %}" class="text-decoration-none text-danger">signin</a> or <a href="{% url 'register' %}" class="text-decoration-none text-danger">Register</a> to comment
+                                </span>
+                            {% elif user.is_authenticated %}
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-outline-danger px-3 py-2 mt-4">Post Comment</button>
+                                </div>
+                            {% else %}
+                                <span class="mt-2">
+                                    Please <a href="{% url 'signin' %}" class="text-decoration-none text-danger">signin</a> or <a href="{% url 'register' %}" class="text-decoration-none text-danger">Register</a> to comment
+                                </span>
+                            {% endif %}
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagi">
+        {% if lastbeat %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'playsong' lastbeat.pk lastbeat %}" id="pred">{{ lastbeat }}</a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'index' %}" id="pred">home</a>
+            </li>
+        {% endif %}
+
+        {% if nextbeat %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'playsong' nextbeat.pk nextbeat %}" id="predj">{{nextbeat}}</a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'index' %}" id="pred">home</a>
+            </li>
+        {% endif %}
+    </div>
+{% endblock content %}
+
+
+
+<!-- footer section -->
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}
